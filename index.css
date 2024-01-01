@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5rem;
+}
+nav .logo {
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-family: "Bebas Neue";
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  display: block;
+}
+nav .menu {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-family: "Bebas Neue";
+}
+
+header {
+  width: 100%;
+  height: 100vh;
+  padding: 0 clamp(4rem, 12vw, 20rem);
+  display: grid;
+  place-content: center;
+}
+header h1 {
+  font-size: 7rem;
+  text-transform: uppercase;
+  font-family: "Bebas Neue";
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  line-height: 5.9rem;
+  color: #1e1e1e;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+}
+header .char {
+  transform: translateY(115px);
+  transition: transform 0.5s;
+  opacity: 0;
+}
+
+section {
+  width: 100%;
+  height: 100vh;
+  padding: 0 clamp(4rem, 12vw, 20rem);
+  display: grid;
+  place-content: center;
+}
+section p {
+  font-size: clamp(2rem, 5vw, 8rem);
+  font-family: "Bebas Neue";
+}
+section:nth-of-type(1) {
+  border-bottom: 1px solid black;
+}
+section:nth-of-type(3) {
+  background: #ffff00;
+}
+section:nth-of-type(4) {
+  background: rgb(29, 29, 29);
+  color: white;
+}/*# sourceMappingURL=index.css.map */

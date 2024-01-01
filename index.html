@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <title>Text Animation</title>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">Nelson Ndukwe</div>
+      <div class="menu">Menu</div>
+    </nav>
+    <header>
+      <h1 id="my-text">Nelson.Ndukwe</h1>
+    </header>
+
+    <section>
+      <p class="reveal-type">
+        Systematically usering in a new genertaiopn of awesome deisgners
+      </p>
+    </section>
+
+    <section>
+      <p class="reveal-type">
+        Mordern UI deisgners will expand their skills to incldue frontend
+      </p>
+    </section>
+
+    <section>
+      <p class="reveal-type">
+        The web sisnt sstatic nymore, interactivity and motion now dominate
+      </p>
+    </section>
+    <section></section>
+  </body>
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"
+    integrity="sha512-EZI2cBcGPnmR89wTgVnN3602Yyi7muWo8y1B3a8WmIv1J9tYG+udH4LvmYjLiGp37yHB7FfaPBo8ly178m9g4Q=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"
+    integrity="sha512-OzC82YiH3UmMMs6Ydd9f2i7mS+UFL5f977iIoJ6oy07AJT+ePds9QOEtqXztSH29Nzua59fYS36knmMcv79GOg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="https://unpkg.com/split-type"></script>
+
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const splitTypes = document.querySelectorAll(".reveal-type");
+    const header = document.querySelector(".header");
+    const title = new SplitType("#my-text");
+    const mytext = document.getElementById("my-text");
+    const logo = document.querySelector(".logo");
+    const menu = document.querySelector(".menu");
+    const tl = gsap.timeline();
+
+    tl.from(logo, 2, {
+      y: -70,
+      ease: "power2.inOut",
+      duration: 1,
+    }, "<")
+
+    gsap.from(menu, 2.5, {
+      y: -50,
+      ease: "power2.inOut",
+      duration: 1.1,
+    }, "<");
+
+    gsap.to(".char", 1 ,{
+      y: 0,
+      opacity: 1,
+      stagger: 0.05,
+      duration: 1,
+      ease: "power2.inOut",
+    },"<");
+
+    splitTypes.forEach((char, index) => {
+      const text = new SplitType(char, { types: "chars" });
+
+      gsap.from(text.chars, {
+        scrollTrigger: {
+          trigger: char,
+          start: "top 80%",
+          end: "top 20%",
+          scrub: 0.1,
+        },
+        y: -20,
+        rotate: "85deg",
+        opacity: 0,
+        transformOrigin: "top",
+        scaleY: 2,
+        ease: "power2.inOut",
+        stagger: 0.1,
+        pin: true,
+      });
+    });
+
+    const lenis = new Lenis();
+
+    lenis.on("scroll", (e) => {
+      console.log(e);
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  </script>
+</html>
