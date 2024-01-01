@@ -17,7 +17,7 @@ nav {
     font-family: "Bebas Neue";
     border-top: 1px solid black;
     border-bottom: 1px solid black;
-    display: block;
+    display: flex;
   }
 
   .menu {
@@ -27,6 +27,33 @@ nav {
     font-family: "Bebas Neue";
   }
 }
+
+
+
+
+
+.list{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  span{
+    font-size: 7rem;
+    text-transform: uppercase;
+    font-family: "Bebas Neue";
+    line-height: 5.9rem;
+    color: #1e1e1e;
+    line-height: 0;
+    text-align: center;
+
+    &:nth-of-type(3){
+      color:blue;
+    }
+  }
+}
+
+
+
 
 header {
   width: 100%;

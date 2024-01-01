@@ -21,6 +21,16 @@
       <h1 id="my-text">Nelson.Ndukwe</h1>
     </header>
 
+    <div class="">
+      <div class="list">
+        <span class="creative">Creative Developer</span>
+
+        <span>Frontend Developer</span>
+        <span>Deisgner</span>
+        <span>Writer</span>
+      </div>
+    </div>
+
     <section>
       <p class="reveal-type">
         Systematically usering in a new genertaiopn of awesome deisgners
@@ -67,26 +77,69 @@
     const logo = document.querySelector(".logo");
     const menu = document.querySelector(".menu");
     const tl = gsap.timeline();
+    const titles = gsap.utils.toArray("span");
+    const creative = document.querySelector(".creative");
 
-    tl.from(logo, 2, {
-      y: -70,
-      ease: "power2.inOut",
-      duration: 1,
-    }, "<")
+    tl.from(
+      logo,
+      2,
+      {
+        y: -70,
+        ease: "power2.inOut",
+        duration: 1,
+      },
+      "<"
+    );
 
-    gsap.from(menu, 2.5, {
-      y: -50,
-      ease: "power2.inOut",
-      duration: 1.1,
-    }, "<");
+    gsap.from(
+      menu,
+      2.5,
+      {
+        y: -50,
+        ease: "power2.inOut",
+        duration: 1.1,
+      },
+      "<"
+    );
 
-    gsap.to(".char", 1 ,{
-      y: 0,
-      opacity: 1,
-      stagger: 0.05,
-      duration: 1,
-      ease: "power2.inOut",
-    },"<");
+    gsap.to(
+      ".char",
+      1,
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.05,
+        duration: 1,
+        ease: "power2.inOut",
+      },
+      "<"
+    );
+
+    titles.forEach((word) => {
+      const titleSplit = new SplitType(word);
+      console.log(`word`, word);
+      tl.from(
+        titleSplit.chars,
+        {
+          opacity: 0,
+          y: 80,
+          rotateX: -90,
+          stagger: 0.02,
+        },
+        "<"
+      )
+        .to(
+          titleSplit.chars,
+          {
+            opacity: 0,
+            y: -80,
+            rotateX: 90,
+            stagger: 0.02,
+          },
+          "<1"
+        )
+        
+    })
 
     splitTypes.forEach((char, index) => {
       const text = new SplitType(char, { types: "chars" });
