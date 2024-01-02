@@ -28,16 +28,12 @@ nav {
   }
 }
 
-
-
-
-
-.list{
+.list {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  span{
+  span {
     font-size: 7rem;
     text-transform: uppercase;
     font-family: "Bebas Neue";
@@ -46,14 +42,11 @@ nav {
     line-height: 0;
     text-align: center;
 
-    &:nth-of-type(3){
-      color:blue;
+    &:nth-of-type(3) {
+      color: blue;
     }
   }
 }
-
-
-
 
 header {
   width: 100%;
